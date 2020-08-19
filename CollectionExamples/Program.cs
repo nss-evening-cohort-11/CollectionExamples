@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using CollectionExamples.LinqStuff;
 
 namespace CollectionExamples
 {
@@ -7,6 +8,8 @@ namespace CollectionExamples
     {
         static void Main(string[] args)
         {
+            var example = new Example();
+            example.Run();
 
             //Lists are a general purpose collection that is pretty good at everything
             var instructors = new List<string>();
@@ -19,6 +22,13 @@ namespace CollectionExamples
             instructors.Add("Jameka");
             instructors.Add("Nathan");
             instructors.Add("Dylan");
+
+
+            foreach (var instructor in instructors)
+            {
+                //this will blow up with an invalid operation exception, collections can't be modified while being iterated
+                instructors.Add("asdf");
+            }
 
             //items need to be of the right type
             numbers.Add(1);
@@ -112,6 +122,7 @@ namespace CollectionExamples
             foreach (var (word, definitions) in wordsWithMultipleDefinitions)
             {
                 Console.WriteLine($"{word} is defined as :");
+                definitions.Add("poop");
                 foreach (var definition in definitions)
                 {
                     Console.WriteLine($"    {definition}");
@@ -123,21 +134,13 @@ namespace CollectionExamples
             queue.Enqueue("this is first");
             queue.Enqueue("Second");
             queue.Enqueue("third");
-            
-            for (var i = 0; i < queue.Count; i++)
+
+            var queueCount = queue.Count;
+
+            for (var i = 0; i < queueCount; i++)
             {
                 Console.WriteLine(queue.Dequeue());
             }
-
-
-
-
-
-
-
-
-
-
         }
     }
 }
