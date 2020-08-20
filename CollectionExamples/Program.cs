@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using CollectionExamples.LinqStuff;
+using System.Linq;
 
 namespace CollectionExamples
 {
@@ -71,6 +72,12 @@ namespace CollectionExamples
             words.Add("pedantic", "Like a pedant");
             words.Add("congratulate", "to be excited for; celebrate");
             words.Add("scrupulous", "diligent,thorough, extremely attentive to details");
+
+            words.Any(word => word.Key == "pedantic");
+
+            var keys = words.Select(word => word.Key);
+
+
 
             //keys must be unique, this won't work
             //words.Add("congratulate", "not a real thing");
